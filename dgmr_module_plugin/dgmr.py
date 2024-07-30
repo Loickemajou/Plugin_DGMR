@@ -79,7 +79,9 @@ def forecast( input_frames,path, num_samples=1, include_input_frames_in_result=F
       include_input_frames_in_result: If True, will return a total of 22 frames
       along the time axis, the 4 input frames followed by 18 predicted frames.
       Otherwise will only return the 18 predicted frames.
-      
+      path: string
+      Contains the path where the model is saved
+      should be in the format {path to the folder}/tfhub_snapshots
       
 
       Hints
