@@ -61,9 +61,9 @@ def _load_model( input_height, input_width,TFHUB_BASE_PATH):
     return hub_module.signatures["default"]
 
 
-def forecast( input_frames, num_samples=1, include_input_frames_in_result=False, **kwargs
+def forecast( input_frames,path, num_samples=1, include_input_frames_in_result=False, **kwargs
 ):
-    module=_load_model(256,256)
+    module=_load_model(256,256,path)
     print("---> Model Loaded, Making prediction")
     """
     

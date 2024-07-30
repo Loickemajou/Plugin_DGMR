@@ -1,7 +1,9 @@
 README.rst
+requirements.txt
 setup.py
 dgmr_module_plugin/__init__.py
 dgmr_module_plugin/dgmr.py
+dgmr_module_plugin/ok.py
 dgmr_plugin.egg-info/PKG-INFO
 dgmr_plugin.egg-info/SOURCES.txt
 dgmr_plugin.egg-info/dependency_links.txt
