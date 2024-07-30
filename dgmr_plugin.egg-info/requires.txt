@@ -1,9 +1,0 @@
-numpy
-pandas
-pyproj
-pysteps
-tensorflow
-tensorflow_hub
-tensorflow_intel
-wradlib
-xarray
