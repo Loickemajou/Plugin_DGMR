@@ -79,7 +79,7 @@ setup(
     # },
     # For this particular example, the entry points are defined as:
     entry_points={
-        'pysteps.nowcasts': [
+        'pysteps.plugin.nowcasts': [
             'dgmr=dgmr_module_plugin.dgmr:forecast',
 
         ]
