@@ -50,6 +50,7 @@ setup(
     keywords=["dgmr_plugin", "pysteps", "plugin", "importer"],
     name="dgmr_plugin",
     packages=find_packages(),
+    package_data={'dgmr_module_plugin':['tfhub_snapshots/*']},
     setup_requires=setup_requirements,
     # Entry points
     # ~~~~~~~~~~~~

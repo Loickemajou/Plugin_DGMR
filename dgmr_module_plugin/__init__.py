@@ -1,1 +1,1 @@
-from .dgmr import forecast
+from .dgmr_module_plugin.dgmr import forecast

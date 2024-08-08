@@ -9,6 +9,10 @@ The DGMR model is a state-of-the-art generative model designed for weather nowca
 It leverages a combination of convolutional neural networks (CNNs) and generative 
 adversarial networks (GANs) to produce high-resolution, realistic rainfall forecasts.
 
+DGMR model weight is not made public and need to be downloaded with Google cloud shell terminal, with the link "gsutil -m cp -r \
+  "gs://dm-nowcasting-example-data/tfhub_snapshots" \ ."
+https://console.cloud.google.com/storage/browser/dm-nowcasting-example-data/tfhub_snapshots;tab=objects?cloudshell=true&project=friendly-retina-382415&prefix&forceOnObjectsSortingFiltering=false
+
 For more details, please see Ravuri, S., Lenc, K., Willson, M. et al. 
 Skilful precipitation nowcasting using deep generative models of radar. Nature 597, 672–677 (2021).
 
@@ -32,7 +36,7 @@ import tensorflow_hub as hub
 
 
   
-def _load_model( input_height, input_width,TFHUB_BASE_PATH):
+def _load_model(input_height, input_width,TFHUB_BASE_PATH):
     """
 
      Parameters
