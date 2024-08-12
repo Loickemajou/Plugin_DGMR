@@ -1,4 +1,4 @@
---pysteps-dgmr-nowcasts
+**pysteps-dgmr-nowcasts**
 
 This is a Python package that provides a deep learning model for performing nowcasting on radar images using the DGMR (Generative Method for Radar) model.
 
@@ -32,4 +32,5 @@ samples = dgmr.forecast(input_frames, num_samples=10)
 For more details on the DGMR model and its implementation, please refer to the pysteps documentation.
 
 --Reference
+
 Ravuri, S., Lenc, K., Willson, M. et al. Skilful precipitation nowcasting using deep generative models of radar. Nature 597, 672–677 (2021).
