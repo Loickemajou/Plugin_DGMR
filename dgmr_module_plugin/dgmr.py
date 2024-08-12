@@ -181,4 +181,3 @@ def forecast( input_frames,num_samples=1, include_input_frames_in_result=False, 
     return samples
 
 
-model=_load_model(256,256)
