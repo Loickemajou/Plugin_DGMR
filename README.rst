@@ -1,3 +1,32 @@
-In a previous study by Ravuri et al., DGMR has been showed to perform better than pySTEPS and some other nowcasting solutions. 
-This study was run with radar precipitation data from the United Kingdom that was used to train and test the model, 
-and a test run using data from the United States (Ravuri et al., 2021).
+pysteps-dgmr-nowcasts
+
+This is a Python package that provides a deep learning model for performing nowcasting on radar images using the DGMR (Generative Method for Radar) model.
+
+Features
+Implements the state-of-the-art DGMR model for weather nowcasting
+Leverages convolutional neural networks (CNNs) and generative adversarial networks (GANs) to produce high-resolution, realistic rainfall forecasts
+Supports preprocessing of input frames to match the expected format of the DGMR model
+Provides a forecast function to generate rainfall predictions given input frames
+Installation
+Install the pysteps-dgmr package using pip:
+bash
+pip install pysteps-dgmr-nowcasts
+
+The package will automatically download the pre-trained DGMR model weights and cache them for future use.
+Usage
+python
+from pysteps.nowcasts.dgmr import forecast
+
+# Prepare input frames (4, 256, 256, 1)
+input_frames = ...
+
+# Generate 10 samples of 18 predicted frames
+samples = forecast(input_frames, num_samples=10)
+
+The forecast function takes preprocessed input frames (4, 256, 256, 1) and generates rainfall predictions. It returns a tensor of shape (num_samples, T_out, H, W, C), where T_out is the number of predicted frames (18 or 22, depending on the include_input_frames_in_result parameter).
+For more details on the DGMR model and its implementation, please refer to the pysteps documentation.
+
+Contributing
+If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on the pysteps repository.
+References
+Ravuri, S., Lenc, K., Willson, M. et al. Skilful precipitation nowcasting using deep generative models of radar. Nature 597, 672–677 (2021).
