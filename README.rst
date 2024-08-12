@@ -12,7 +12,9 @@ Provides a forecast function to generate rainfall predictions given input frames
 ###Installation
 
 Install the pysteps-dgmr package using pip:
+
 bash
+
 pip install pysteps-dgmr-nowcasts
 
 The package will automatically download the pre-trained DGMR model weights and cache them for future use.
