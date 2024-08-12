@@ -1,4 +1,4 @@
-##pysteps-dgmr-nowcasts
+## **pysteps-dgmr-nowcasts**
 
 This is a Python package that provides a deep learning model for performing nowcasting on radar images using the DGMR (Generative Method for Radar) model.
 
