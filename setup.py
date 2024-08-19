@@ -28,6 +28,7 @@ requirements = ['numpy','pandas','pyproj','pysteps','tensorflow','tensorflow_hub
 # For example, if the package use compile extensions (like Cython), they can be included
 # here.
 setup_requirements = []
+test_requirements = ['pytest>=3']
 
 setup(
     author="pysteps",
