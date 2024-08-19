@@ -46,6 +46,8 @@ setup(
     install_requires=requirements,
     license="MIT license",
     long_description=long_description,
+    test_suite='tests',
+    tests_require=test_requirements,
     include_package_data=True,
     keywords=["dgmr_plugin", "pysteps", "plugin", "importer"],
     name="dgmr_plugin",
@@ -79,7 +81,7 @@ setup(
     # },
     # For this particular example, the entry points are defined as:
     entry_points={
-        'pysteps.plugin.nowcasts': [
+        'pysteps.plugins.nowcasts': [
             'dgmr=dgmr_module_plugin.dgmr:forecast',
 
         ]
