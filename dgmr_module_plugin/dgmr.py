@@ -23,52 +23,57 @@ Skilful precipitation nowcasting using deep generative models of radar. Nature 5
 
 import os
 
-os.environ["HF_HUB_DISABLE_SYMLINKS"] = "1" # Copy the model folder instead of creating symlinks
+os.environ["HF_HUB_DISABLE_SYMLINKS"] = (
+    "1"  # Copy the model folder instead of creating symlinks
+)
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'   # Suppress INFO messages
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress INFO messages
 
 from huggingface_hub import snapshot_download
 import tensorflow_hub as hub
 import tensorflow as tf
 
 
-  # Set to 'ERROR' to only show error messages
-tf.get_logger().setLevel('ERROR')
+# Set to 'ERROR' to only show error messages
+tf.get_logger().setLevel("ERROR")
 
 
-cache_dir=None
+cache_dir = None
+
+
 def get_cache_dir():
-    if os.name == 'nt': # Window
+    if os.name == "nt":  # Window
         cache_dir = os.path.join(os.path.expanduser("~"), "pysteps", "pystepscache")
-    else: # Unix
+    else:  # Unix
         cache_dir = os.path.join(os.path.expanduser("~"), ".pysteps", "pystepscache")
     return cache_dir
 
 
 os.environ["HF_TOKEN"] = "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"
-repo_id = 'lofaleu/DGMR'
-cache_dir =get_cache_dir()
+repo_id = "lofaleu/DGMR"
+cache_dir = get_cache_dir()
 
-
-
-      
 
 def download_weights(repo_id, cache_dir):
-     # Check if the weights folder already exists in the cache
-     if not os.path.exists(cache_dir):
+    # Check if the weights folder already exists in the cache
+    if not os.path.exists(cache_dir):
         print("Downloading model weights and caching it for future use...")
         # Download the entire repository to the cache directory
         os.makedirs(cache_dir, exist_ok=True)
         local_dir = snapshot_download(repo_id=repo_id, cache_dir=cache_dir)
         return local_dir
-     else:
-          local_dir=os.path.join(cache_dir,"models--lofaleu--DGMR\snapshots\e8aebca9e2c64cf072a69bc3de8400eae417b6d4/tfhub_snapshots")
-          return local_dir
+    else:
+        local_dir = os.path.join(
+            cache_dir,
+            "models--lofaleu--DGMR\snapshots\e8aebca9e2c64cf072a69bc3de8400eae417b6d4/tfhub_snapshots",
+        )
+        return local_dir
 
-tfpath=download_weights(repo_id, cache_dir)
+
+tfpath = download_weights(repo_id, cache_dir)
+
 
 def _load_model(input_height, input_width):
-
     """
 
      Parameters
@@ -87,12 +92,10 @@ def _load_model(input_height, input_width):
      -------
     The loaded model
     """
-    tfpath=download_weights(repo_id, cache_dir)
+    tfpath = download_weights(repo_id, cache_dir)
     print("--> Loading model...")
 
-    hub_module = hub.load(
-        os.path.join(tfpath, f"{input_height}x{input_width}")
-    )
+    hub_module = hub.load(os.path.join(tfpath, f"{input_height}x{input_width}"))
     # Note this has loaded a legacy TF1 model for running under TF2 eager mode.
     # This means we need to access the module via the "signatures" attribute. See
     # https://github.com/tensorflow/hub/blob/master/docs/migration_tf2.md#using-lower-level-apis
@@ -100,9 +103,10 @@ def _load_model(input_height, input_width):
     return hub_module.signatures["default"]
 
 
-def forecast( input_frames,num_samples=1, include_input_frames_in_result=False, **kwargs
+def forecast(
+    input_frames, num_samples=1, include_input_frames_in_result=False, **kwargs
 ):
-    module=_load_model(256,256)
+    module = _load_model(256, 256)
     print("---> Model Loaded, Making prediction")
     """
     
@@ -144,10 +148,10 @@ def forecast( input_frames,num_samples=1, include_input_frames_in_result=False, 
 
 
     """
-    
+
     NUM_INPUT_FRAMES = 4
-    #Checks whether the input frame has the correct shape supported by the model
-    if input_frames.shape==(4,256,256,1):
+    # Checks whether the input frame has the correct shape supported by the model
+    if input_frames.shape == (4, 256, 256, 1):
         input_frames = tf.math.maximum(input_frames, 0.0)
         # Add a batch dimension and tile along it to create a copy of the input for
         # each sample:
@@ -173,11 +177,11 @@ def forecast( input_frames,num_samples=1, include_input_frames_in_result=False, 
         # Take positive values of rainfall only.
         samples = tf.math.maximum(samples, 0.0)
     else:
-        raise Exception('Incorrect shape  for DGMR. DGMR shapes need to be preprocessed as follows\n'+
-                        '(4,256,256,1) --where 4=batch size: four frames\n'+
-                                       --'256 by 256 the size of the cropped images\n'+
-                                        --'1: Indicating only one channel in this case (precipitation)')
-        
+        raise Exception(
+            "Incorrect shape  for DGMR. DGMR shapes need to be preprocessed as follows\n"
+            + "(4,256,256,1) where 4=batch size: four frames\n"
+            + "256 by 256 the size of the cropped images\n"
+            + "1: Indicating only one channel in this case (precipitation)"
+        )
+
     return samples
-
-
