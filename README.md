@@ -9,7 +9,7 @@ Leverages convolutional neural networks (CNNs) and generative adversarial networ
 Supports preprocessing of input frames to match the expected format of the DGMR model
 Provides a forecast function to generate rainfall predictions given input frames
 
-###Installation
+### Installation
 
 Install the pysteps-dgmr package using pip:
 
@@ -19,15 +19,15 @@ pip install pysteps-dgmr-nowcasts
 
 The package will automatically download the pre-trained DGMR model weights and cache them for future use.
 
-###Usage
+### Usage
 
 python
 from pysteps.nowcasts import dgmr
 
-####Prepare input frames (4, 256, 256, 1)
+#### Prepare input frames (4, 256, 256, 1)
 input_frames = ...
 
-####Generate 10 samples of 18 predicted frames
+#### Generate 10 samples of 18 predicted frames
 samples = dgmr.forecast(input_frames, num_samples=10)
 
 The forecast function takes preprocessed input frames (4, 256, 256, 1) and generates rainfall predictions. It returns a tensor of shape (num_samples, T_out, H, W, C), where T_out is the number of predicted frames (18 or 22, depending on the include_input_frames_in_result parameter).
