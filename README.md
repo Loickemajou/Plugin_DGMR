@@ -27,8 +27,8 @@ _from pysteps.nowcasts import dgmr_
 #### Prepare input frames (4, 256, 256, 1)
 input_frames = ...
 
-#### Generate 10 samples of 18 predicted frames
-samples = dgmr.forecast(input_frames, num_samples=10)
+#### Generate 1 samples of 18 predicted frames
+_samples = dgmr.forecast(input_frames, num_samples=1)_
 
 The forecast function takes preprocessed input frames (4, 256, 256, 1) and generates rainfall predictions. It returns a tensor of shape (num_samples, T_out, H, W, C), where T_out is the number of predicted frames (18 or 22, depending on the include_input_frames_in_result parameter).
 For more details on the DGMR model and its implementation, please refer to the pysteps documentation.
