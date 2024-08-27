@@ -65,7 +65,10 @@ def download_weights(repo_id, cache_dir):
     else:
         local_dir = os.path.join(
             cache_dir,
-            "models--lofaleu--DGMR\snapshots\e8aebca9e2c64cf072a69bc3de8400eae417b6d4/tfhub_snapshots",
+            "models--lofaleu--DGMR",
+            "snapshots",
+            "e8aebca9e2c64cf072a69bc3de8400eae417b6d4",
+            "tfhub_snapshots",
         )
         return local_dir
 
@@ -177,7 +180,7 @@ def forecast(
         # Take positive values of rainfall only.
         samples = tf.math.maximum(samples, 0.0)
     else:
-        raise Exception(
+        raise ValueError(
             "Incorrect shape  for DGMR. DGMR shapes need to be preprocessed as follows\n"
             + "(4,256,256,1) where 4=batch size: four frames\n"
             + "256 by 256 the size of the cropped images\n"
