@@ -1,2 +1,2 @@
-[pysteps.nowcasts]
+[pysteps.plugins.nowcasts]
 dgmr = dgmr_module_plugin.dgmr:forecast

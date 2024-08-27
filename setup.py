@@ -17,7 +17,7 @@ from setuptools import setup, find_packages
 # separate README file.
 # The following lines use the contents of the readme file as long
 # description.
-with open("README.rst") as readme_file:
+with open("README.md") as readme_file:
     long_description = readme_file.read()
 
 # Add the plugin dependencies here. This dependencies will be installed along with your

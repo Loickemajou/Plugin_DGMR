@@ -7,3 +7,4 @@ tensorflow_hub
 tensorflow_intel
 wradlib
 xarray
+huggingface_hub

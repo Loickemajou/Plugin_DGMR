@@ -1,4 +1,4 @@
-README.rst
+README.md
 requirements.txt
 setup.py
 dgmr_module_plugin/__init__.py
