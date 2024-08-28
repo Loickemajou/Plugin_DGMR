@@ -161,10 +161,6 @@ def prep(field: xr.DataArray) -> np.ndarray:
 
 
 def forecast_demo():
-    """
-    performs a demo on how the DGMR plugin should work, with the expected input and output.
-    """
-   
     # get the cache directory where the data will be stored
     if os.name == "nt":  # Window
         cache_dir = os.path.join(os.path.expanduser("~"), "pysteps", "data")
@@ -176,7 +172,7 @@ def forecast_demo():
         # Download the entire repository to the cache directory
         os.makedirs(cache_dir, exist_ok=True)
         pysteps.datasets.download_pysteps_data(cache_dir, force=True)
-        data_path = os.path.join(cache_dir, "radar/rmi/radqpe/20210704")
+        data_path = os.path.join(cache_dir, "radar", "rmi", "radqpe", "20210704")
         print(f"saved in {data_path}")
     else:
         cache_dir = r"C:\Users\user\pysteps\data\radar\rmi\radqpe\20210704"
@@ -196,7 +192,10 @@ def forecast_demo():
 
     animations.animate(observation, dgmr_forecast, savefig=True)
 
-  
+    """
+    Inspired by the LDCast, performs a demo on how the DGMR plugin should work, with the expected input and output.
+    """
+
 
 if __name__ == "__main__":
     forecast_demo()
