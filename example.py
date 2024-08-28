@@ -175,14 +175,13 @@ def forecast_demo():
         print("Downloading test_data")
         # Download the entire repository to the cache directory
         os.makedirs(cache_dir, exist_ok=True)
-        print(cache_dir)
         pysteps.datasets.download_pysteps_data(cache_dir, force=True)
-        cache_dir = os.path.join(cache_dir, "/radar/rmi/radqpe/20210704")
-        print(f"saved in {cache_dir}")
+        data_path = os.path.join(cache_dir, "radar/rmi/radqpe/20210704")
+        print(f"saved in {data_path}")
     else:
         cache_dir = r"C:\Users\user\pysteps\data\radar\rmi\radqpe\20210704"
 
-    data = prep(read(cache_dir))
+    data = prep(read(data_path))
     # slice the first four frames for predictions
     input_frame = data[:4]
     print(input_frame.shape)
