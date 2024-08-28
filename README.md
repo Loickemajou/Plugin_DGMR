@@ -36,7 +36,7 @@ For more details on the DGMR model and its implementation, please refer to the p
 ### Example.
 In oder to have an example on how the model works, you can run the _example.py_
 
-<img src="observation_vs_forecast.gif"/>
+<img src="annimation.gif"/>
 
 ### Reference
 
