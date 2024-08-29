@@ -49,7 +49,6 @@ def get_cache_dir():
     return cache_dir
 
 
-os.environ["HF_TOKEN"] = "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"
 repo_id = "lofaleu/DGMR"
 cache_dir = get_cache_dir()
 
