@@ -22,7 +22,7 @@ with open("README.md") as readme_file:
 
 # Add the plugin dependencies here. This dependencies will be installed along with your
 # package.
-requirements = ['numpy','pandas','pyproj','pysteps','tensorflow','tensorflow_hub','tensorflow_intel','wradlib','xarray','huggingface_hub']
+requirements = ['numpy','pandas','pyproj','pysteps','tensorflow','tensorflow_hub','tensorflow_intel','wradlib','xarray','huggingface_hub','python-dotenv']
 
 # Add the dependencies needed to build the package.
 # For example, if the package use compile extensions (like Cython), they can be included
