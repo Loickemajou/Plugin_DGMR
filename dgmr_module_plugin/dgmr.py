@@ -62,14 +62,12 @@ def download_weights(repo_id, cache_dir):
         local_dir = snapshot_download(repo_id=repo_id, cache_dir=cache_dir)
         return local_dir
     else:
-        local_dir = os.path.join(
-            cache_dir,
-            "models--lofaleu--DGMR",
-            "snapshots",
-            "e8aebca9e2c64cf072a69bc3de8400eae417b6d4",
-            "tfhub_snapshots",
-        )
-        return local_dir
+        # Automatically find the model path within the cache
+        model_dir = next(os.path.join(cache_dir, d) for d in os.listdir(cache_dir) if "models--" in d)
+        return os.path.join(model_dir, 
+                            "snapshots",
+                            "e8aebca9e2c64cf072a69bc3de8400eae417b6d4",
+                            "tfhub_snapshots")
 
 
 tfpath = download_weights(repo_id, cache_dir)
