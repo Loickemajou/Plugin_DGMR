@@ -51,7 +51,7 @@ setup(
     tests_require=test_requirements,
     include_package_data=True,
     keywords=["dgmr", "pysteps", "plugin", "importer"],
-    name="pysteps_dgmr_plugin",
+    name="pysteps_dgmr_nowcasts",
     packages=find_packages(),
     setup_requires=setup_requirements,
     # Entry points
