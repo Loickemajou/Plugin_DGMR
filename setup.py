@@ -50,8 +50,8 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     include_package_data=True,
-    keywords=["dgmr_plugin", "pysteps", "plugin", "importer"],
-    name="dgmr_plugin",
+    keywords=["dgmr", "pysteps", "plugin", "importer"],
+    name="pysteps_dgmr_plugin",
     packages=find_packages(),
     setup_requires=setup_requirements,
     # Entry points
